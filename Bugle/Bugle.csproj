@@ -86,7 +86,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AboutViewModel.cs" />
+    <Compile Include="Services\TFSEventManager.cs" />
+    <Compile Include="Toast\BrokenBuildView.xaml.cs">
+      <DependentUpon>BrokenBuildView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Toast\BrokenBuildViewModel.cs" />
+    <Compile Include="Toast\TrayIconView.xaml.cs">
+      <DependentUpon>TrayIconView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Toast\TrayIconViewModel.cs" />
+    <Page Include="AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConfigurationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,7 +112,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
-    <Compile Include="ConfigManager.cs" />
+    <Compile Include="Services\ConfigManager.cs" />
     <Compile Include="DI\DefaultRegistry.cs" />
     <Compile Include="DI\StructureMapBootstrapper.cs" />
     <Compile Include="ConfigurationViewModel.cs" />
@@ -104,7 +120,11 @@
       <DependentUpon>ConfigurationView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Toast\TrayIconResources.xaml">
+    <Page Include="Toast\BrokenBuildView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toast\TrayIconView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,12 +157,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\bugle.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\bugle.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\BrokenBuild.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

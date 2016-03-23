@@ -8,7 +8,6 @@
                 <ResourceDictionary>
                     <bugle:AppBootstrapper x:Key="bootstrapper" />
                 </ResourceDictionary>
-                <ResourceDictionary Source="/Toast/TrayIconResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

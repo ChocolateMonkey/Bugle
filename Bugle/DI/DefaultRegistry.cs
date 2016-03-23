@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SevanConsulting.Bugle.Services;
 using StructureMap;
 
 namespace SevanConsulting.Bugle.DI
@@ -15,8 +16,10 @@ namespace SevanConsulting.Bugle.DI
         public DefaultRegistry()
         {            
             For<IWindowManager>().Use(new WindowManager()).Singleton();
-            For<ConfigurationManager>().Use(new ConfigurationManager()).Singleton();
             For<ILog>().Use(x => LogManager.GetLog(x.ParentType));
+            For<IEventAggregator>().Use(new EventAggregator()).Singleton();
+            For<TfsEventManager>().Singleton();
+            For<ConfigurationManager>().Use(new ConfigurationManager()).Singleton();
         }
     }
 }

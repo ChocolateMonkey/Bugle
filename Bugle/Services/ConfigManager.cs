@@ -1,4 +1,4 @@
-﻿namespace SevanConsulting.Bugle
+﻿namespace SevanConsulting.Bugle.Services
 {
     /// <summary>
     /// Manage configuration objects
