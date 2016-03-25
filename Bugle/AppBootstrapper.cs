@@ -26,7 +26,8 @@ namespace SevanConsulting.Bugle
         /// <param name="e">The args.</param>
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewFor<TrayIconViewModel>();
+            // Deliberately not buildable, for testing!
+            DisplayRootViewFor<TrayIconViewModelZZ>();
             _eventManager = RootContainer.GetInstance<TfsEventManager>();
 
         }
