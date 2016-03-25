@@ -96,7 +96,7 @@
     </Compile>
     <Compile Include="Toast\BrokenBuildViewModel.cs" />
     <Compile Include="Toast\CaliburnNotifyIconBridge.cs" />
-    <Compile Include="CaliburnMessageDispatcher.cs" />
+    <Compile Include="CaliburnTrayMessageDispatcher.cs" />
     <Compile Include="Toast\TrayIconView.xaml.cs">
       <DependentUpon>TrayIconView.xaml</DependentUpon>
     </Compile>

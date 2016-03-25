@@ -27,12 +27,12 @@
             </Grid.RowDefinitions>
             <Image Source="pack://application:,,,/Icons/BrokenBuild.png" Width="64" VerticalAlignment="Center" Grid.RowSpan="2" />
             <Border Grid.Column="1" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="DimGray" Padding="0,0,0,5" Margin="5">
-                <TextBlock x:Name="Heading" Text="Design time text for fun dk sfnk;lsdjkl;j dfs;kj dsfk;lj dsflk; ds hifdlk hsdf" 
-                           TextWrapping="Wrap" Style="{StaticResource ToastHeaderText}"/>
+                <TextBlock x:Name="Heading" Text="Design time text for a long header that wraps..."
+                           Style="{StaticResource ToastHeaderText}"/>
             </Border>
             
-            <TextBlock Padding="5,0,5,5" Grid.Column="1" Grid.Row="1" x:Name="BuildMessage" TextWrapping="Wrap" Style="{StaticResource ToastMessageText}"
-                       Text="Some build message for the designer to chew on, which is suitable long" />
+            <TextBlock Padding="5,0,5,5" Grid.Column="1" Grid.Row="1" x:Name="BuildMessage" Style="{StaticResource ToastMessageText}"
+                       Text="Some build message for the designer to chew on, which is suitably long" />
         </Grid>
     </Border>
 </UserControl>

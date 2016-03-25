@@ -9,13 +9,30 @@ namespace SevanConsulting.Bugle.Toast
 {
     public class BrokenBuildViewModel:PropertyChangedBase
     {
-        public string BuildMessage { get; set; }
-        public string Heading { get; set; }
+        private string _buildMessage;
+        private string _heading;
 
-        public BrokenBuildViewModel()
+        public string BuildMessage
         {
-            
+            get { return _buildMessage; }
+            set
+            {
+                if (value == _buildMessage) return;
+                _buildMessage = value;
+                NotifyOfPropertyChange(() => BuildMessage);
+            }
         }
 
+        public string Heading
+        {
+            get { return _heading; }
+            set
+            {
+                if (value == _heading) return;
+                _heading = value;
+                NotifyOfPropertyChange(() => Heading);
+            }
+        }
+     
     }
 }

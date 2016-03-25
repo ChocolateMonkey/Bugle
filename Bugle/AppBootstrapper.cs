@@ -28,6 +28,7 @@ namespace SevanConsulting.Bugle
         {
             DisplayRootViewFor<TrayIconViewModel>();
             _eventManager = RootContainer.GetInstance<TfsEventManager>();
+
         }
 
         /// <summary>

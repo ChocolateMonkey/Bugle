@@ -20,7 +20,6 @@ namespace SevanConsulting.Bugle.Services
         public TfsEventManager(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            
         }
 
     }

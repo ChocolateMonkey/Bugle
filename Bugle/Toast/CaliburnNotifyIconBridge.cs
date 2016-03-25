@@ -15,7 +15,7 @@ namespace SevanConsulting.Bugle.Toast
             DependencyProperty.RegisterAttached("Attached", typeof (bool), typeof (CaliburnNotifyIconBridge),
                 new PropertyMetadata(AttachChanged));
 
-        private static CaliburnMessageDispatcher _viewBroker;
+        private static CaliburnTrayMessageDispatcher _viewBroker;
 
 
         public static bool GetAttached(TaskbarIcon tb)
@@ -41,7 +41,7 @@ namespace SevanConsulting.Bugle.Toast
 
             if ((bool)e.NewValue)
             {
-                _viewBroker = IoC.Get<CaliburnMessageDispatcher>();
+                _viewBroker = IoC.Get<CaliburnTrayMessageDispatcher>();
                 _viewBroker.TrayIcon = icon;
             }
             else
