@@ -3,10 +3,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using System.Windows.Media;
+using SevanConsulting.Bugle.Services;
 
 namespace SevanConsulting.Bugle.Toast
 {
-    public class TrayIconViewModel: PropertyChangedBase, IHandle<string>
+    /// <summary>
+    /// View model for system tray icon, serves as application main view / VM.
+    /// </summary>
+    public class TrayIconViewModel: PropertyChangedBase
     {
         private readonly IWindowManager _windowManager;
         private readonly ILog _logger;
@@ -39,23 +43,10 @@ namespace SevanConsulting.Bugle.Toast
             Application.Current.Shutdown();
         }
 
-        public void DoubleClickTrayIcon()
+        public void DoubleClickIcon()
         {
-            
+            _eventAggregator.PublishOnUIThread("Clicked");
         }
 
-        public void Handle(string message)
-        {
-            // handle events from the TFS event manager
-            _logger.Info("Event: "+message);
-
-            //todo - need to wrap TrayIcon into something that can be poked from a VM, 'cos this isn't the right direction!
-            var viewModel = IoC.Get<BrokenBuildViewModel>();
-            var view = ViewLocator.LocateForModel(viewModel, null, null);
-            ViewModelBinder.Bind(viewModel, view, null);
-            
-            PopupControl = view;
-            NotifyOfPropertyChange(() => PopupControl);
-        }
     }
 }

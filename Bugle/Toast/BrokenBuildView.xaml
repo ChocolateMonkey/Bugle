@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SevanConsulting.Bugle.Toast"
              mc:Ignorable="d" 
-             d:DesignHeight="125" d:DesignWidth="350">
+             d:DataContext="{d:DesignInstance local:BrokenBuildViewModel}"
+             d:DesignHeight="125" d:DesignWidth="350"
+             Margin="5"
+             MaxWidth="350" MaxHeight="150">
     <Border CornerRadius="5" BorderBrush="DimGray" BorderThickness="1" >
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,8 +21,18 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Image Source="pack://application:,,,/Icons/BrokenBuild.png" Width="64" VerticalAlignment="Center" />
-            <TextBlock Grid.Column="1" x:Name="BuildMessage" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Source="pack://application:,,,/Icons/BrokenBuild.png" Width="64" VerticalAlignment="Center" Grid.RowSpan="2" />
+            <Border Grid.Column="1" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="DimGray" Padding="0,0,0,5" Margin="5">
+                <TextBlock x:Name="Heading" Text="Design time text for fun dk sfnk;lsdjkl;j dfs;kj dsfk;lj dsflk; ds hifdlk hsdf" 
+                           TextWrapping="Wrap" Style="{StaticResource ToastHeaderText}"/>
+            </Border>
+            
+            <TextBlock Padding="5,0,5,5" Grid.Column="1" Grid.Row="1" x:Name="BuildMessage" TextWrapping="Wrap" Style="{StaticResource ToastMessageText}"
+                       Text="Some build message for the designer to chew on, which is suitable long" />
         </Grid>
     </Border>
 </UserControl>

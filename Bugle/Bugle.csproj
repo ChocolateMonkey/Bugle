@@ -95,6 +95,8 @@
       <DependentUpon>BrokenBuildView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Toast\BrokenBuildViewModel.cs" />
+    <Compile Include="Toast\CaliburnNotifyIconBridge.cs" />
+    <Compile Include="CaliburnMessageDispatcher.cs" />
     <Compile Include="Toast\TrayIconView.xaml.cs">
       <DependentUpon>TrayIconView.xaml</DependentUpon>
     </Compile>
@@ -121,6 +123,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Toast\BrokenBuildView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Toast\ToastStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

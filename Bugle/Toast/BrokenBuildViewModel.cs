@@ -10,10 +10,12 @@ namespace SevanConsulting.Bugle.Toast
     public class BrokenBuildViewModel:PropertyChangedBase
     {
         public string BuildMessage { get; set; }
+        public string Heading { get; set; }
 
         public BrokenBuildViewModel()
         {
             
         }
+
     }
 }
