@@ -19,7 +19,7 @@ namespace SevanConsulting.Bugle.DI
             For<ILog>().Use(x => LogManager.GetLog(x.ParentType));
             For<IEventAggregator>().Use(new EventAggregator()).Singleton();
             For<TfsEventManager>().Singleton();
-            For<ConfigurationManager>().Use(new ConfigurationManager()).Singleton();
+            For<ConfigurationManager>().Singleton();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using Caliburn.Micro;
 using Hardcodet.Wpf.TaskbarNotification;
+using SevanConsulting.Bugle.Helpers;
 using SevanConsulting.Bugle.Toast;
 
 namespace SevanConsulting.Bugle
@@ -25,7 +26,7 @@ namespace SevanConsulting.Bugle
     /// <summary>
     /// Action Caliburn messages relating to the system tray icon
     /// </summary>
-    public class CaliburnTrayMessageDispatcher: IHandle<string>
+    public class CaliburnTrayBroker: IHandle<BrokenBuildMessage>
     {
         private readonly ILog _logger;
 
@@ -34,10 +35,19 @@ namespace SevanConsulting.Bugle
         /// </summary>
         public TaskbarIcon TrayIcon { get; set; }
 
-        public CaliburnTrayMessageDispatcher(ILog logger, IEventAggregator aggregator)
+        public CaliburnTrayBroker(ILog logger, IEventAggregator aggregator)
         {
             aggregator.Subscribe(this);
             _logger = logger;            
+        }
+
+        /// <summary>
+        /// Set the tooltip text on the tray icon
+        /// </summary>
+        /// <param name="newToolTip">new text to use</param>
+        public void SetToolTipText(string newToolTip)
+        {
+            TrayAction(x => x.ToolTipText = newToolTip);
         }
 
         /// <summary>
@@ -54,14 +64,12 @@ namespace SevanConsulting.Bugle
         /// Handles the message.
         /// </summary>
         /// <param name="message">The message.</param>
-        public void Handle(string message)
+        public void Handle(BrokenBuildMessage message)
         {
-            _logger.Info("Handled event: " + message);
-
             var popup = ResolveView<BrokenBuildViewModel>();
 
-            popup.ViewModel.BuildMessage = "nah, it's bust again. Whatr are we going to do?! nk; sdfgl;kn dsflk;n sdfl;khj dsfl;k\r\nStuff on a new line";
-            popup.ViewModel.Heading = "CI Build broken";
+            popup.ViewModel.BuildMessage = $"Build {message.BuildDefinitionName} - {message.BuildNumber} broke on {message.BuildDate?.ToString()}";
+            popup.ViewModel.Heading = "Build broken";
 
             TrayAction(x => x.ShowCustomBalloon(popup.View, PopupAnimation.Slide, 5500));
         }
